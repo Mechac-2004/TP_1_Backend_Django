@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     
     'booker',
     'rest_framework',
-	'drf_yasg',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [

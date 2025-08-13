@@ -35,7 +35,11 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('api/', include([
         path('', include('booker.urls')),
-        path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='swagger-ui'),
+        path(
+            'swagger/',
+            schema_view.with_ui('swagger', cache_timeout=0),
+            name='swagger-ui',
+        ),
     ])),
 ]
 
