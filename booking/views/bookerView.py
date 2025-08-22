@@ -1,0 +1,20 @@
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from booking.models import Booker
+from booking.serializers import BookerSerializer
+
+class BookerView(APIView):
+
+    def get(self, request):
+        bookers = Booker.objects.all()
+        serializer = BookerSerializer(bookers, many=True)
+        return Response(serializer.data)
+    
+    def post(self, request):
+        serializer = BookerSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()  # crée un nouvel objet Booker dans la base
+            return Response(serializer.data, status=201)
+        else:
+            return Response(serializer.errors, status=400)
+
