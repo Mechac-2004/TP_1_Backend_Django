@@ -1,0 +1,43 @@
+# === Python ===
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.sqlite3
+*.db
+
+# === Environnement virtuel ===
+env/
+venv/
+ENV/
+.venv/
+
+# === Django specific ===
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+db.sqlite3
+media/
+staticfiles/
+
+# === Environment variables ===
+*.env
+.env.*
+
+# === IDE & OS files ===
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# === Coverage / Tests ===
+htmlcov/
+.coverage
+.tox/
+pytest_cache/
+
+
