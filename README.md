@@ -44,7 +44,7 @@ python manage.py makemigrations
 
 python manage.py migrate
 
-6 **Démarrage du projet**
+6. **Démarrage du projet**
 
 Et en fin démarrer le projet avec 
 
