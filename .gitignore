@@ -1,0 +1,26 @@
+# Ignorer les fichiers temporaires
+*.log
+*.tmp
+*.swp
+
+# Ignorer les fichiers système
+.DS_Store
+Thumbs.db
+
+# Ignorer les dossiers de dépendances
+node_modules/
+vendor/
+
+# Ignorer les environnements virtuels
+venv/
+.env/
+.env.local
+
+# Ignorer les fichiers de build
+dist/
+build/
+out/
+
+# Ignorer les caches
+.cache/
+__pycache__/
