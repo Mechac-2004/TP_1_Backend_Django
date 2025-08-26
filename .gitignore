@@ -1,26 +1,18 @@
-# Ignorer les fichiers temporaires
-*.log
-*.tmp
-*.swp
-
-# Ignorer les fichiers système
-.DS_Store
-Thumbs.db
-
-# Ignorer les dossiers de dépendances
-node_modules/
-vendor/
-
-# Ignorer les environnements virtuels
+# Environnements
+env/
 venv/
-.env/
-.env.local
+*.pyc
+__pycache__/
 
-# Ignorer les fichiers de build
+# Fichiers secrets
+.env
+
+# Bases de données locales
+db.sqlite3
+
+# Logs
+*.log
+
+# Dossiers de build
 dist/
 build/
-out/
-
-# Ignorer les caches
-.cache/
-__pycache__/
