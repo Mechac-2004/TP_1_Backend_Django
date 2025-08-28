@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+from datetime import timedelta
 from pathlib import Path
 from decouple import config
 
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'django_seed',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -170,10 +172,10 @@ AUTH_USER_MODEL = 'booking.User'
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 100,
-
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ]
-
+    'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',)
 }
+
+SIMPLE_JWT = {
+        'ACCESS_TOKEN_LIFESPAN': timedelta(minutes=15), 
+        'REFRESH_TOKEN_LIFESPAN': timedelta(days=1),    
+    }
