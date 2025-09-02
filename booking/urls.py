@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from booking.views import EventViewSet, UserView, BookerView, UserDetailView
+from booking.views import EventViewSet, UserView, BookerView, UserDetailView, RegisterView, LoginView
 
 print("booking urls loaded")
 
@@ -12,4 +12,6 @@ urlpatterns = [
     path('bookers/', BookerView.as_view(), name='booker'),
     path('users/', UserView.as_view(), name='user'),  
     path('users/<int:id>/', UserDetailView.as_view(), name='user-detail'),
+    path('register/', RegisterView.as_view(), name='register'),
+    path('login/', LoginView.as_view(), name='login'),
 ]
