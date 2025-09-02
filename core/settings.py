@@ -175,6 +175,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',)
 }
 
+
 SIMPLE_JWT = {
         'ACCESS_TOKEN_LIFESPAN': timedelta(minutes=15), 
         'REFRESH_TOKEN_LIFESPAN': timedelta(days=1),    

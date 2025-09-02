@@ -13,7 +13,7 @@ class BookerView(APIView):
     def post(self, request):
         serializer = BookerSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()  # crée un nouvel objet Booker dans la base
+            serializer.save()  
             return Response(serializer.data, status=201)
         else:
             return Response(serializer.errors, status=400)

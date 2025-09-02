@@ -1,7 +1,7 @@
 from booking.models import User
 from django.contrib.auth.hashers import make_password
 
-for i in range(1, 41):
+for i in range(1, 3):
     sexe = 'M' if i % 2 == 1 else 'F'
     role = 'client'
     if i == 1:
@@ -18,4 +18,5 @@ for i in range(1, 41):
         is_superuser=True if i == 1 else False
     )
 
-print("Création de 40 utilisateurs terminée.")
+print("Création de 3 utilisateurs terminée.")
+
