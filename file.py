@@ -10,7 +10,7 @@ for i in range(1, 41):
     User.objects.create(
         email=f"user{i}@example.com",
         username=f"user_{i}",
-        first_name=f"Prénom_{i}",
+        first_name=f"Prenom_{i}",
         last_name=f"Nom_{i}",
         password=make_password('password123'), 
         role=role,

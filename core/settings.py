@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'booking',
     'rest_framework',
     'drf_yasg',
-    'django_seed',
 ]
 
 MIDDLEWARE = [
@@ -160,8 +159,8 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 100,
 
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
     ]
 
 }

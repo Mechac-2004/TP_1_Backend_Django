@@ -10,10 +10,4 @@ class UserView(APIView):
         serializer = UserSerializer(user, many=True)
         return Response(serializer.data)
 
-    def post(self, request):
-        user = UserSerializer(data=request.data)
-        if user.is_valid():
-            user.save()
-            return Response({"message": "User created successfully."}, status=201)
-        else:
-            return Response(user.errors, status=400)
+  
