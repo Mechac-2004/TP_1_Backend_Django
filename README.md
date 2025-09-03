@@ -34,7 +34,7 @@ source env/bin/activate
 
 4. **Installer les dépendances**
 
-pip install freeze -r requirement.txt
+pip install -r requirement.txt
 
 5. **Les Migrations**
 
