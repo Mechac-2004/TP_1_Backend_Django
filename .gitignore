@@ -1,18 +1,28 @@
-# Environnements
-env/
+# Virtual Environment
 venv/
+.env/
+
+# Database Files
+db.sqlite3
+*.sqlite3-journal
+
+# Compiled Python Files
 *.pyc
 __pycache__/
 
-# Fichiers secrets
+# Static and Media Files
+/static/
+/media/
+
+# Environment Specific Configuration
 .env
+local_settings.py
 
-# Bases de données locales
-db.sqlite3
+# IDE and Editor Specific Files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
 
-# Logs
+# Log Files
 *.log
-
-# Dossiers de build
-dist/
-build/
