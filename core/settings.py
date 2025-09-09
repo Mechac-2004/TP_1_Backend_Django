@@ -10,7 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+from datetime import timedelta
 from pathlib import Path
+from decouple import config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&ccg(3o7sr#$0o!_mmlguqw@$id#55=0e^abrl35^^a#_^ri@o'
+SECRET_KEY = '9ecvj%em^o-badfay8z3uil1#@281vj&5*8ea*lih((35t67ys'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True  
 
 ALLOWED_HOSTS = []
 
@@ -40,6 +43,7 @@ INSTALLED_APPS = [
     'booking',
     'rest_framework',
     'drf_yasg',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -76,11 +80,21 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('DB_NAME'),     
+        'USER': config('DB_USER'),         
+        'PASSWORD': config('DB_PASSWORD'), 
+        'HOST': config('DB_HOST'),       
+        'PORT': '5432',            
     }
 }
+
 
 
 # Password validation
@@ -157,10 +171,11 @@ AUTH_USER_MODEL = 'booking.User'
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 100,
-
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-    ]
-
+    'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',)
 }
+
+
+SIMPLE_JWT = {
+        'ACCESS_TOKEN_LIFESPAN': timedelta(minutes=15), 
+        'REFRESH_TOKEN_LIFESPAN': timedelta(days=1),    
+    }

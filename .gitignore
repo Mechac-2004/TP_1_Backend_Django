@@ -1,0 +1,18 @@
+# Environnements
+env/
+venv/
+*.pyc
+__pycache__/
+
+# Fichiers secrets
+.env
+
+# Bases de données locales
+db.sqlite3
+
+# Logs
+*.log
+
+# Dossiers de build
+dist/
+build/
