@@ -34,7 +34,7 @@ Sous linux /MacOs
 
 4. **Installer les dépendances**
 
-        pip install -r requirement.txt
+        pip install -r requirements.txt
 
 5. **Les Migrations**
 

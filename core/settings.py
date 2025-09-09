@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'booking',
     'rest_framework',
     'drf_yasg',
-    'django_seed',
     'rest_framework_simplejwt',
 ]
 

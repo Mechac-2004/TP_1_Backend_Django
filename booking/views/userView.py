@@ -1,11 +1,13 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from yaml import serialize
 from booking.models import User
 from booking.serializers import UserSerializer
 from rest_framework import status
+from rest_framework.permissions import IsAdminUser
 
 class UserView(APIView):
-
+    permission_classes = [IsAdminUser]
     def get(self, request):
         user = User.objects.all()
         serializer = UserSerializer(user, many=True)

@@ -1,9 +1,11 @@
 from rest_framework.views import APIView
+from rest_framework import permissions
 from rest_framework.response import Response
 from booking.models import Booker
 from booking.serializers import BookerSerializer
 
 class BookerView(APIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get(self, request):
         bookers = Booker.objects.all()
