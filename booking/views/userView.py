@@ -2,10 +2,19 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from yaml import serialize
 from booking.models import User
+from booking.permissions import IsAdmin
 from booking.serializers import UserSerializer
 from rest_framework import status
 from rest_framework.permissions import IsAdminUser
 
+
+class UserListView(APIView):
+    permission_classes = [IsAdmin]  # Seul l'admin peut voir les users
+
+    def get(self, request):
+        users = User.objects.all()
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data)
 class UserView(APIView):
     permission_classes = [IsAdminUser]
     def get(self, request):

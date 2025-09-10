@@ -6,26 +6,20 @@ from booking.models import Event, Booker
 
 @receiver(post_migrate)
 def create_groups_and_permissions(sender, **kwargs):
-    # Groupe Admin
+    # Créer les groupes s'ils n'existent pas
     admin_group, _ = Group.objects.get_or_create(name="Admin")
-
-    # Groupe Client
     client_group, _ = Group.objects.get_or_create(name="Client")
 
-    # Permissions par défaut de Django (CRUD sur tous les modèles)
-    all_permissions = Permission.objects.all()
-    admin_group.permissions.set(all_permissions)  # admin = tous les droits
+    # Donner tous les droits à Admin
+    admin_group.permissions.set(Permission.objects.all())
 
-    # Permissions spécifiques pour client
+    # Donner certains droits au Client
     client_permissions = []
 
-    # Ex: Client peut voir les événements
     client_permissions += Permission.objects.filter(
         content_type=ContentType.objects.get_for_model(Event),
         codename__in=["view_evenement"]
     )
-
-    # Ex: Client peut réserver
     client_permissions += Permission.objects.filter(
         content_type=ContentType.objects.get_for_model(Booker),
         codename__in=["add_reservation", "view_reservation"]
