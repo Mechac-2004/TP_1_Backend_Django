@@ -176,6 +176,6 @@ REST_FRAMEWORK = {
 
 
 SIMPLE_JWT = {
-        'ACCESS_TOKEN_LIFESPAN': timedelta(minutes=15), 
+        'ACCESS_TOKEN_LIFESPAN': timedelta(days=15), 
         'REFRESH_TOKEN_LIFESPAN': timedelta(days=1),    
     }

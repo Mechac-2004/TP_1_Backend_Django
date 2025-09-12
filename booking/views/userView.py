@@ -1,3 +1,4 @@
+from urllib import response
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from yaml import serialize
@@ -6,11 +7,14 @@ from booking.permissions import IsAdmin
 from booking.serializers import UserSerializer
 from rest_framework import status
 from rest_framework.permissions import IsAdminUser
+from drf_yasg.utils import swagger_auto_schema
+
+from booking.serializers import UserSerializer
 
 
 class UserListView(APIView):
     permission_classes = [IsAdmin]  # Seul l'admin peut voir les users
-
+    @swagger_auto_schema(responses={200: UserSerializer(many=True)})
     def get(self, request):
         users = User.objects.all()
         serializer = UserSerializer(users, many=True)

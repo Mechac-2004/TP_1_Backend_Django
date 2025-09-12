@@ -18,10 +18,15 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('booking/', include('booking.urls')),
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0) ),
-    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0)),
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+    # Route p
+    #path('booking/', include('booking.urls')),
+    path('booking/', include([
+        path('', include('booking.urls')),
+        path('swagger/', schema_view.with_ui('swagger', cache_timeout=0) ),
+        path('redoc/', schema_view.with_ui('redoc', cache_timeout=0)),
+        path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+        path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+        path('token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+    ])),
+    
 ]
