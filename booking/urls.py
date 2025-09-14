@@ -1,18 +1,25 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from booking.views import EventViewSet, UserView, BookerView, RegisterView, LoginView, RefreshView, LogoutView
-
-print("booking urls loaded")
-
-router = DefaultRouter()
-router.register(r'event', EventViewSet, basename='event')
+from django.urls import path
+from booking.views.userView import (
+    LoginView,
+    RegisterView,
+    UserProfileView,
+    AssignGroupView
+)
+from booking.views.eventView import EventListCreateView, EventDetailView
+from booking.views.bookerView import BookerListCreateView, BookerDetailView
 
 urlpatterns = [
-    path('', include(router.urls)),
-    path('booker/', BookerView.as_view(), name='booker'),
-    path('user/', UserView.as_view(), name='user'),  
-    path('register/', RegisterView.as_view(), name='register'),
-    path('login/', LoginView.as_view(), name='login'),
-    path('refresh/', RefreshView.as_view(), name='refresh'),
-    path('logout', LogoutView.as_view(), name='logout'),
+    # --- USERS ---
+    path("auth/login/", LoginView.as_view(), name="login"),
+    path("auth/register/", RegisterView.as_view(), name="register"),
+    path("auth/profile/", UserProfileView.as_view(), name="user-profile"),
+    path("auth/assign-group/<int:pk>/", AssignGroupView.as_view(), name="assign-group"),
+
+    # --- EVENTS ---
+    path("events/", EventListCreateView.as_view(), name="event-list-create"),
+    path("events/<int:pk>/", EventDetailView.as_view(), name="event-detail"),
+
+    # --- BOOKINGS ---
+    path("bookings/", BookerListCreateView.as_view(), name="booking-list-create"),
+    path("bookings/<int:pk>/", BookerDetailView.as_view(), name="booking-detail"),
 ]

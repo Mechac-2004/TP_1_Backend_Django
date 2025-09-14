@@ -1,4 +1,3 @@
-from .userSerializer import UserSerializer
+from .userSerializer import CustomTokenObtainPairSerializer, RegisterSerializer, UserSerializer, AdminAssignGroupSerializer
 from .bookerSerializer import BookerSerializer
 from .eventSerializer import EventSerializer
-from .tokenSerializer import TokenSerializer
