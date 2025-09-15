@@ -1,64 +1,22 @@
-# Byte-compiled / optimized / compiled files
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-
-# C extensions
-*.so
-
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Environments
-.env
-.venv
+# Virtual env
 env/
 venv/
-ENV/
-env.bak/
-venv.bak/
+*.pyc
+__pycache__/
 
-# Project-specific files
+# SQLite database
+db.sqlite3
+
+# Django stuff
 *.log
 *.pot
-*.mo
-db.sqlite3
-media/ # If you are storing user-uploaded media files locally
-local_settings.py # Or any other file containing sensitive local settings
-static_root/ # If you are collecting static files to a separate directory
-
-# Editors
-.idea/ # PyCharm
-.vscode/ # VS Code
-*.sublime-project
-*.sublime-workspace
-.DS_Store # macOS
-Thumbs.db # Windows
-
-# Debugging and testing
-.coverage
-.tox/
-/htmlcov/
-.pytest_cache/
+*.pyc
+*.py[cod]
 *.swp
-*.swo
+media/
+staticfiles/
 
-# Other
-*.bak
-*.tmp
+# IDE files
+.vscode/
+.idea/
+*.iml

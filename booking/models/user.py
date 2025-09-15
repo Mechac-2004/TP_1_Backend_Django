@@ -36,8 +36,8 @@ class UserManager(BaseUserManager):
 
 class User(AbstractUser):
     """Modèle d'utilisateur personnalisé basé sur AbstractUser."""
-
-    email = models.EmailField(unique=True, db_index=True)
+    username = None
+    email = models.EmailField(unique=True)
     
     objects = UserManager()
 

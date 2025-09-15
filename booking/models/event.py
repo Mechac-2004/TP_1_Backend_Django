@@ -24,11 +24,11 @@ class Event(models.Model):
     def clean(self):
         # Empêcher un utilisateur qui n'est pas Admin/Organisateur de créer un event
         if not (self.user.groups.filter(name__in=['Organisateur', 'Admin']).exists()):
-            raise ValidationError("Seuls les organisateurs ou admins peuvent créer un événement.")
+            raise ValidationError("Only organizer or Admin can create Event.")
 
         # La date doit être dans le futur
         if self.date < timezone.now():
-            raise ValidationError("La date de l'événement doit être dans le futur.")
+            raise ValidationError("The date of the event must be in future.")
 
     def save(self, *args, **kwargs):
         # Si nbPlaceAvailable n'est pas défini, on l'initialise avec nbPlace
