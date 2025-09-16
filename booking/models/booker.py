@@ -10,8 +10,8 @@ class Booker(models.Model):
     nbrPlaceReserver = models.PositiveIntegerField()
     date = models.DateTimeField(auto_now_add=True)
 
-    class Meta:
-        unique_together = ('user', 'event')  # Empêche un user de réserver 2 fois le même event
+    # class Meta:
+    #     # unique_together = ('user', 'event')  # Empêche un user de réserver 2 fois le même event
 
     def clean(self):
         # Vérifier que l'événement est publié

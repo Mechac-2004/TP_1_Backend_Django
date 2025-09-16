@@ -3,7 +3,8 @@ from booking.views.userView import (
     LoginView,
     RegisterView,
     UserProfileView,
-    AssignGroupView
+    AssignGroupView,
+    UserListView
 )
 from booking.views.eventView import EventListCreateView, EventDetailView
 from booking.views.bookerView import BookerListCreateView, BookerDetailView
@@ -14,6 +15,7 @@ urlpatterns = [
     path("auth/register/", RegisterView.as_view(), name="register"),
     path("auth/profile/", UserProfileView.as_view(), name="user-profile"),
     path("auth/assign-group/<int:pk>/", AssignGroupView.as_view(), name="assign-group"),
+    path("users/", UserListView.as_view(), name="user-list"),
 
     # --- EVENTS ---
     path("events/", EventListCreateView.as_view(), name="event-list-create"),

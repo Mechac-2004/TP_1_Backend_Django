@@ -15,6 +15,7 @@ from booking.serializers.userSerializer import (
     AdminAssignGroupSerializer,
 )
 from booking.serializers.userSerializer import CustomTokenObtainPairSerializer
+from booking.permissions import IsAdminUserOnly
 
 
 # --- LOGIN VIEW ---
@@ -98,3 +99,24 @@ class AssignGroupView(APIView):
             serializer.save()
             return Response(UserSerializer(user).data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+class UserListView(APIView):
+    """
+    Vue pour récupérer la liste des utilisateurs (accessible uniquement par les admins)
+    """
+    permission_classes = [IsAdminUserOnly]
+
+    @extend_schema(
+        summary="Liste des utilisateurs (Admin uniquement)",
+        description="Retourne la liste de tous les utilisateurs de la plateforme. Seul un admin peut accéder à ce endpoint.",
+        responses={
+            200: OpenApiResponse(response=UserSerializer(many=True), description="Liste des utilisateurs"),
+            403: OpenApiResponse(description="Accès interdit - Vous n'êtes pas admin")
+        },
+        tags=['Users']
+    )
+    def get(self, request):
+        users = User.objects.all().order_by("-date_joined")
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

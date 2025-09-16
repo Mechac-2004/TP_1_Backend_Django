@@ -13,3 +13,12 @@ class IsManagerOrAdmin(BasePermission):
                 or request.user.groups.filter(name__in=['Organizer']).exists()
             )
         )
+        
+
+class IsAdminUserOnly(BasePermission):
+    """
+    Permission : seul un utilisateur avec le rôle 'admin' ou is_staff=True
+    peut accéder à la vue.
+    """
+    def has_permission(self, request, view):
+        return bool(request.user and request.user.is_authenticated and (request.user.is_staff or request.user.role == "admin"))
