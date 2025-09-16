@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'booking',
     'rest_framework',
-    'drf_yasg',
     'drf_spectacular',
 ]
 
@@ -182,7 +181,17 @@ REST_FRAMEWORK = {
 
 }
 
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Booking API',
+    'DESCRIPTION': 'Cette API gère les utilisateurs, l’authentification, les événements et les réservations.',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
+
 SIMPLE_JWT= {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1), 
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),      
 }
+
+
+

@@ -6,9 +6,9 @@ from .user import User
 
 class Event(models.Model):
     STATUS_CHOICES = [
-        ('draft', 'Brouillon'),
-        ('published', 'Publié'),
-        ('archived', 'Archivé'),
+        ('draft', 'Draft'),
+        ('published', 'Published'),
+        ('archived', 'Archived'),
     ]
 
     title = models.CharField(max_length=255)
@@ -23,7 +23,7 @@ class Event(models.Model):
 
     def clean(self):
         # Empêcher un utilisateur qui n'est pas Admin/Organisateur de créer un event
-        if not (self.user.groups.filter(name__in=['Organisateur', 'Admin']).exists()):
+        if not (self.user.groups.filter(name__in=['Organizer', 'Admin']).exists()):
             raise ValidationError("Only organizer or Admin can create Event.")
 
         # La date doit être dans le futur

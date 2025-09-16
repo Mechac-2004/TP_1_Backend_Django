@@ -16,11 +16,11 @@ class Booker(models.Model):
     def clean(self):
         # Vérifier que l'événement est publié
         if self.event.statut != 'published':
-            raise ValidationError("Impossible de réserver un événement non publié.")
+            raise ValidationError("You can't book for an unpublished event.")
 
         # Vérifier qu'il y a assez de places
         if self.nbrPlaceReserver > self.event.nbPlaceAvailable:
-            raise ValidationError("Pas assez de places disponibles pour cette réservation.")
+            raise ValidationError("Not enough available places for this booking.")
 
     def save(self, *args, **kwargs):
         # Décrémenter nbPlaceAvailable dans l'événement

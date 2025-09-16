@@ -12,9 +12,9 @@ class CustomTokenAuthentication(BaseAuthentication):
         try:
             token_obj = Token.objects.get(access_token=token)
         except Token.DoesNotExist:
-            raise AuthenticationFailed("Access token invalide")
+            raise AuthenticationFailed("Invalid access token")
         
         if token_obj.is_access_token_expired():
-            raise AuthenticationFailed("Access token expiré")
+            raise AuthenticationFailed("Expired access token")
         
         return (token_obj.user, None)
